@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date Interval Calculator</title>
+    <!-- Include jQuery and Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css" />
+    <style>
+        div {
+            display: grid;
+            justify-items: center;
+            padding: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HTML code -->
+    <div>
+        <p>
+            Start Date: <input type="date" id="start-date">
+        </p>
+        <p>
+            End Date: <input type="date" id="end-date">
+        </p>
+        <button id="calculate-interval" class="btn btn-primary">Calculate Interval</button>
+        <p id="interval-result"></p>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        $(document).ready(function () {
+            $("#calculate-interval").click(function () {
+                var startDate = new Date($("#start-date").val());
+                var endDate = new Date($("#end-date").val());
+                var interval = endDate.getTime() - startDate.getTime();
+                var years = Math.floor(interval / (1000 * 60 * 60 * 24 * 365));
+                var months = Math.floor(interval / (1000 * 60 * 60 * 24 * 30));
+                var weeks = Math.floor(interval / (1000 * 60 * 60 * 24 * 7));
+                var days = Math.floor(interval / (1000 * 60 * 60 * 24));
+                $("#interval-result").text("Interval: " + years + "  " + " years" + "  " + months + " months" + "  " + weeks + " weeks" + "  " + days + " days.");
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
